@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        .outer-div {
+            width: 100vw;
+            height: 100vh;
+            text-align: center;
+            background: linear-gradient(to bottom right, #85FFBD, #FFFB7D);
+        }
+
+        .box {
+            width: 100vw;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main {
+            font-family: 'Cookie', cursive;
+            font-size: xx-large;
+            border: 10px solid white;
+            background-color: rgb(192, 247, 247);
+            background-image: url("asset\ 35.svg");
+            background-repeat: no-repeat;
+            background-position-x: 20px;
+            background-position-y: 20px;
+            width: 50%;
+            height: 60%;
+            padding-top: 50px;
+            overflow: auto;
+        }
+        .text{
+            position: relative;
+            margin: 50px;
+            width: 80%;
+        }
+        button {
+            width: 50%;
+            color: white;
+            padding: 10px;
+            border: 0.5px solid rgb(186, 184, 184);
+            border-radius: 6px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: medium;
+            cursor: pointer;
+            background-color: rgb(119, 119, 249);
+        }
+        p{
+            position: absolute;
+            right: 3px;
+        }
+        button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer-div">
+        <h1>Quotes Generator</h1>
+        <div class="box">
+            <div class="main">
+                <div class="text">
+                    <h3>Press the button to generate new quotes</h3>
+                </div>
+            </div>
+            <button>New Quotes</button>
+        </div>
+    </div>
+
+
+
+    <script>
+        const api = "https://type.fit/api/quotes";
+        const btn = document.querySelector('button');
+        const main = document.querySelector('.main');
+        const txt=document.querySelector('.text');
+        const h3 = document.querySelector('h3');
+        const p=document.createElement('p');
+        var quote="Live life in your own  way.";
+        var author="Adesh";
+        getqoutes = async () => {
+            try {
+                const data = await fetch(api);
+                const json_data = await data.json();
+                const rand=Math.floor(Math.random()*1500+1);
+                quote=json_data[rand].text;
+                author=json_data[rand].author;
+            }
+            catch (e) {
+                console.error(e);
+            }
+        }
+
+        btn.addEventListener('click', () => {
+            h3.remove();
+            getqoutes();
+            h3.innerText=quote;
+            p.innerText="-"+author;
+            txt.append(h3)
+            txt.append(p)
+        })
+
+    </script>
+</body>
+
+</html>
