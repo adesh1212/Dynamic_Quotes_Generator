@@ -12,7 +12,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-
         }
 
         .outer-div {
@@ -23,14 +22,14 @@
         }
 
         .box {
-            width: 100vw;
-            height: 90vh;
+            width: 100%;
+            height: 90%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-        }
 
+        }
         .main {
             font-family: 'Cookie', cursive;
             font-size: xx-large;
@@ -40,7 +39,7 @@
             background-repeat: no-repeat;
             background-position-x: 20px;
             background-position-y: 20px;
-            width: 50%;
+            width: 70%;
             height: 60%;
             padding-top: 50px;
             overflow: auto;
@@ -48,10 +47,9 @@
         .text{
             position: relative;
             margin: 50px;
-            width: 80%;
         }
         button {
-            width: 50%;
+            width: 70%;
             color: white;
             padding: 10px;
             border: 0.5px solid rgb(186, 184, 184);
@@ -67,6 +65,57 @@
         }
         button:hover {
             background-color: blue;
+        }
+
+        @media screen and (max-width:950px) {
+        .box{
+            height: 80;
+            justify-content: flex-start;
+        }
+    .main{
+        height: 50%;
+    }
+        }
+
+        @media screen and (max-width:650px) {
+         .main{
+            background-size:50px ;
+         }
+         .box{
+            height: 100vh;
+            margin-top: 30px;
+            justify-content: flex-start;
+         }
+        }
+
+        @media screen and (max-width:500px) {
+            .box{
+                height: 80%;
+            }
+         .main{
+            height: 80%;
+            width: 90%;
+            background-size:40px ;
+            overflow: auto;
+         }
+         button{
+            width: 90%;
+         }
+         .text{
+            margin: 60px 5px;
+            font-size: 25px;
+         }
+
+        }
+        @media screen and (max-width:400px) {
+         .main{
+            height: 80%;
+            background-size:40px ;
+            overflow: auto;
+         }
+         h1{
+            font-size: 1.7rem;
+         }
         }
     </style>
 </head>
